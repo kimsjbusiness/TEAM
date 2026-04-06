@@ -10,7 +10,7 @@ from rouge_score import rouge_scorer
 
 class TraditionalSummarizer:
     """TF-IDF와 MMR 기반의 전통적 추출 요약 모듈"""
-    def __init__(self, lambda_param=0.5):
+    def __init__(self, lambda_param=0.7):
         self.lambda_param = lambda_param
         self.okt = Okt()
         # 한국어 불용어 사전 (프로젝트 규모에 따라 확장 필요)
@@ -77,7 +77,7 @@ class LLMSummarizer:
         # Gemini 1.5 Flash 또는 Pro 모델 지정
         self.model = genai.GenerativeModel('gemini-1.5-flash')
 
-    def summarize(self, text, target_sentences_count=3):
+    def summarize(self, text, target_sentences_count=5):
         # 통제 변인을 적용한 정교화된 프롬프트
         prompt = f"""다음 제공되는 텍스트를 철저히 분석하여, 전체 내용을 포괄하는 핵심 요약문을 작성하라. 
 조건 1: 요약문은 반드시 {target_sentences_count}개의 문장으로만 구성할 것.
