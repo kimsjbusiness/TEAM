@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+jinja2
+python-multipart
+ollama
+pandas
+numpy
+konlpy
+scikit-learn
+networkx
